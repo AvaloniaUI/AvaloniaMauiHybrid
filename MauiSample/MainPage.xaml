@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maui="clr-namespace:Avalonia.Maui.Controls;assembly=Avalonia.Maui"
+             xmlns:ava="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+             xmlns:view="clr-namespace:MauiSample.Avalonia.Views"
+             x:Class="MauiSample.MainPage">
+    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <maui:AvaloniaView HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+            <view:MainView HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+        </maui:AvaloniaView>
+    </StackLayout>
+
+</ContentPage>
