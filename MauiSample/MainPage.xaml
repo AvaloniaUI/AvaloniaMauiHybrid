@@ -6,7 +6,7 @@
              xmlns:view="clr-namespace:MauiSample.Avalonia.Views"
              x:Class="MauiSample.MainPage">
     <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <maui:AvaloniaView HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+        <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <view:MainView HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
         </maui:AvaloniaView>
     </StackLayout>
