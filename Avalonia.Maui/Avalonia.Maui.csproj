@@ -22,7 +22,4 @@
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Platforms\Windows\" />
-    </ItemGroup>
 </Project>
