@@ -37,10 +37,8 @@ namespace Avalonia.Maui.Handlers
             {
                 control.Measure(new Size(widthConstraint, heightConstraint));
 
-                var displayInfo = DeviceDisplay.MainDisplayInfo;
-
-                var size = new Size(VirtualView.VerticalOptions.Alignment == LayoutAlignment.Fill ? widthConstraint : control.DesiredSize.Width,
-                    VirtualView.HorizontalOptions.Alignment == LayoutAlignment.Fill ? heightConstraint : control.DesiredSize.Height);
+                var size = new Size(VirtualView.VerticalOptions.Alignment == LayoutAlignment.Fill ? heightConstraint : control.DesiredSize.Height,
+                    VirtualView.HorizontalOptions.Alignment == LayoutAlignment.Fill ? widthConstraint : control.DesiredSize.Width);
 
                 base.GetDesiredSize(size.Width, size.Height);
 

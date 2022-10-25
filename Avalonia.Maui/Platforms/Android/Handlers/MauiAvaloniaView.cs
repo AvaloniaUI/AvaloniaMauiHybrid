@@ -1,5 +1,7 @@
 ﻿using Android.Content;
+using Android.Graphics;
 using Avalonia.Maui.Controls;
+using Color = Android.Graphics.Color;
 
 namespace Avalonia.Maui.Platforms.Android.Handlers
 {
@@ -10,6 +12,8 @@ namespace Avalonia.Maui.Platforms.Android.Handlers
         public MauiAvaloniaView(Context context, AvaloniaView mauiView) : base(context)
         {
             _mauiView = mauiView;
+
+            SetBackgroundColor(Color.Transparent);
         }
 
         public void UpdateContent()

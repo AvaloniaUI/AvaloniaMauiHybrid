@@ -7,5 +7,5 @@
              x:Class="MauiSample.Avalonia.Views.MainView"
              Foreground="White"
              Background="#171C2C">
-  <TextBlock Text="Welcome to Avalonia" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <TextBlock Text="Welcome to Avalonia In Maui" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </UserControl>
