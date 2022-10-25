@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maui="clr-namespace:Avalonia.Maui.Controls;assembly=Avalonia.Maui"
+             xmlns:ava="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+             xmlns:view="clr-namespace:MauiSample.Avalonia.Views"
+             x:Class="MauiSample.MainPage">
+    <StackLayout Orientation="Vertical" Padding="5"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+        <Label HorizontalOptions="Center" Text="Welcome to Avalonia in MAUI"/>
+        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="5">Controls</Label>
+        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Buttons</Label>
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ava:Button Content="Avalonia Button"/>
+            </maui:AvaloniaView>
+            <Button Text="Maui Button"/>
+        </StackLayout>
+        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Toggles</Label>
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ava:ToggleSwitch Content="Avalonia Switch"/>
+            </maui:AvaloniaView>
+            <Switch/>
+        </StackLayout>
+        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Radio Button</Label>
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ava:StackPanel>
+                    <ava:StackPanel.Children>
+                        <ava:RadioButton GroupName="Radio" Content="Avalonia Radio 1"/>
+                        <ava:RadioButton GroupName="Radio"  Content="Avalonia Radio 2"/>
+                        <ava:RadioButton GroupName="Radio"  Content="Avalonia Radio 3"/>
+                    </ava:StackPanel.Children>
+                </ava:StackPanel>
+            </maui:AvaloniaView>
+            <StackLayout>
+                <RadioButton Content="Maui Radio 1" GroupName="Radio"/>
+                <RadioButton Content="Maui Radio 2" GroupName="Radio"/>
+                <RadioButton Content="Maui Radio 3" GroupName="Radio"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
