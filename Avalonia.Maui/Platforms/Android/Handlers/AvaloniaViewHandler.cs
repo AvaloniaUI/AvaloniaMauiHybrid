@@ -33,16 +33,13 @@ namespace Avalonia.Maui.Handlers
 
         public override Microsoft.Maui.Graphics.Size GetDesiredSize(double widthConstraint, double heightConstraint)
         {
-            if ((VirtualView.VerticalOptions.Alignment != LayoutAlignment.Fill || VirtualView.HorizontalOptions.Alignment != LayoutAlignment.Fill) && VirtualView.Content is Layoutable control)
+            if (VirtualView.Content is Layoutable control)
             {
                 control.Measure(new Size(widthConstraint, heightConstraint));
 
-                var size = new Size(VirtualView.VerticalOptions.Alignment == LayoutAlignment.Fill ? heightConstraint : control.DesiredSize.Height,
-                    VirtualView.HorizontalOptions.Alignment == LayoutAlignment.Fill ? widthConstraint : control.DesiredSize.Width);
+                base.GetDesiredSize(control.DesiredSize.Width, control.DesiredSize.Height);
 
-                base.GetDesiredSize(size.Width, size.Height);
-
-                return new Microsoft.Maui.Graphics.Size(size.Width, size.Height);
+                return new Microsoft.Maui.Graphics.Size(control.DesiredSize.Width, control.DesiredSize.Height);
             }
             else
             {
