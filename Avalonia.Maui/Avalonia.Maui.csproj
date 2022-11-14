@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android</TargetFrameworks>
+		<TargetFrameworks>net6.0-android; net6.0-ios</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
@@ -18,6 +18,9 @@
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android'))">
 		<PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
     </ItemGroup>
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios'))">
+		<PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
+	</ItemGroup>
     <ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
