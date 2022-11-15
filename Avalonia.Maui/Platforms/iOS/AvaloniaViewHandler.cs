@@ -1,7 +1,8 @@
 ﻿using Avalonia.Layout;
-using Avalonia.Maui.Platforms.Android.Handlers;
+using Avalonia.Maui.Controls;
 using Microsoft.Maui.Handlers;
-using AvaloniaView = Avalonia.Maui.Controls.AvaloniaView;
+using Avalonia.Maui.Platforms.iOS;
+using AvaloniaControl = Avalonia.Controls.Control;
 
 namespace Avalonia.Maui.Handlers
 {
@@ -9,19 +10,20 @@ namespace Avalonia.Maui.Handlers
     {
         protected override MauiAvaloniaView CreatePlatformView()
         {
-            return new MauiAvaloniaView(Context, VirtualView);
+            return new MauiAvaloniaView(VirtualView);
         }
 
         protected override void ConnectHandler(MauiAvaloniaView platformView)
         {
             base.ConnectHandler(platformView);
 
-            platformView.Content = VirtualView.Content;
+            platformView.Content = VirtualView.Content as AvaloniaControl;
         }
 
         protected override void DisconnectHandler(MauiAvaloniaView platformView)
         {
             platformView.Dispose();
+
             base.DisconnectHandler(platformView);
         }
 
@@ -32,13 +34,16 @@ namespace Avalonia.Maui.Handlers
 
         public override Microsoft.Maui.Graphics.Size GetDesiredSize(double widthConstraint, double heightConstraint)
         {
-            if (VirtualView.Content is Layoutable control)
+            if ((VirtualView.VerticalOptions.Alignment != LayoutAlignment.Fill || VirtualView.HorizontalOptions.Alignment != LayoutAlignment.Fill) && VirtualView.Content is Layoutable control)
             {
                 control.Measure(new Size(widthConstraint, heightConstraint));
 
-                base.GetDesiredSize(control.DesiredSize.Width, control.DesiredSize.Height);
+                var size = new Size(VirtualView.VerticalOptions.Alignment == LayoutAlignment.Fill ? heightConstraint : control.DesiredSize.Height,
+                    VirtualView.HorizontalOptions.Alignment == LayoutAlignment.Fill ? widthConstraint : control.DesiredSize.Width);
 
-                return new Microsoft.Maui.Graphics.Size(control.DesiredSize.Width, control.DesiredSize.Height);
+                base.GetDesiredSize(size.Width, size.Height);
+
+                return new Microsoft.Maui.Graphics.Size(size.Width, size.Height);
             }
             else
             {

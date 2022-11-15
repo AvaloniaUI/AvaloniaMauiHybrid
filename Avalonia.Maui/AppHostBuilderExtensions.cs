@@ -8,6 +8,8 @@
             customizeBuilder(avaloniaBuilder);
 #if ANDROID
             avaloniaBuilder.UseAndroid();
+#elif IOS
+            avaloniaBuilder.UseiOS();
 #endif
             var lifetime = new MauiApplicationLifetime();
 
