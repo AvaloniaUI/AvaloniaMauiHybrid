@@ -22,7 +22,7 @@ namespace MauiSample
                 })
                 .ConfigureMauiHandlers(handlers =>
                 {
-#if ANDROID || IOS
+#if ANDROID || IOS || WINDOWS
                     handlers.AddHandler(typeof(AvaloniaView), typeof(AvaloniaViewHandler));
 #endif
                 });
