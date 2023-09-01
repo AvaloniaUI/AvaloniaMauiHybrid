@@ -13,7 +13,6 @@
 #elif IOS
             avaloniaBuilder.UseiOS();
 #elif WINDOWS
-            //Avalonia.Win32ApplicationExtensions
             avaloniaBuilder.UseWin32();
 #else
 #error missing use for platform
