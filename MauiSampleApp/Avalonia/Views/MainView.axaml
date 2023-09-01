@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SampleApp.ViewModels"
              mc:Ignorable="d"
-             x:Class="MauiSample.Avalonia.Views.MainView"
+             x:Class="MauiSampleApp.Avalonia.Views.MainView"
              Foreground="White"
              Background="#171C2C">
   <TextBlock Text="Welcome to Avalonia In Maui" HorizontalAlignment="Center" VerticalAlignment="Center"/>

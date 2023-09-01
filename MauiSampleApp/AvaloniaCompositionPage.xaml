@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maui="clr-namespace:Avalonia.Maui.Controls;assembly=Avalonia.Maui"
-             x:Class="MauiSample.AvaloniaCompositionPage"
+             x:Class="MauiSampleApp.AvaloniaCompositionPage"
              xmlns:avalonia="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
-             xmlns:view="clr-namespace:MauiSample.Avalonia.Views"
+             xmlns:view="clr-namespace:MauiSampleApp.Avalonia.Views"
              Title="AvaloniaCompositionPage">
     <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

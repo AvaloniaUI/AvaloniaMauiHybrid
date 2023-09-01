@@ -11,7 +11,7 @@ using Border = Avalonia.Controls.Border;
 using Color = Avalonia.Media.Color;
 using SolidColorBrush = Avalonia.Media.SolidColorBrush;
 
-namespace MauiSample.Avalonia.Views;
+namespace MauiSampleApp.Avalonia.Views;
 
 public partial class CompositionPage : UserControl
 {

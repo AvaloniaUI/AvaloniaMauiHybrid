@@ -1,4 +1,4 @@
-namespace MauiSample
+namespace MauiSampleApp
 {
 	public partial class AvaloniaCompositionPage : ContentPage
 	{

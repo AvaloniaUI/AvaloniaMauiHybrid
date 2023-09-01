@@ -1,7 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:pages="clr-namespace:MauiSample.Avalonia.Views"
-             x:Class="MauiSample.Avalonia.Views.CompositionPage">
+             xmlns:pages="clr-namespace:MauiSampleApp.Avalonia.Views"
+             x:Class="MauiSampleApp.Avalonia.Views.CompositionPage">
     <StackPanel>
         <TextBlock Classes="h1">Implicit animations</TextBlock>
         <Grid ColumnDefinitions="*,10,40" Margin="0 0 40 0">

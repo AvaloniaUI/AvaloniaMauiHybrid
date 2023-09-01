@@ -11,7 +11,7 @@ namespace MauiSample
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<MauiSampleApp.App>()
                 .UseAvalonia<MauiSample.AvaloniaApp>(appBuilder =>
                 {
                 })

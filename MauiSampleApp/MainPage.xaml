@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maui="clr-namespace:Avalonia.Maui.Controls;assembly=Avalonia.Maui"
              xmlns:ava="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
-             xmlns:view="clr-namespace:MauiSample.Avalonia.Views"
-             x:Class="MauiSample.MainPage">
+             xmlns:view="clr-namespace:MauiSampleApp.Avalonia.Views"
+             x:Class="MauiSampleApp.MainPage">
     <StackLayout Orientation="Vertical" Padding="5"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
         <Label HorizontalOptions="Center" Text="Welcome to Avalonia in MAUI"/>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="5">Controls</Label>

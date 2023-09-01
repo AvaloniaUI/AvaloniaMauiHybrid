@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace MauiSample.Avalonia.Views
+namespace MauiSampleApp.Avalonia.Views
 {
     public class MainView : UserControl
     {

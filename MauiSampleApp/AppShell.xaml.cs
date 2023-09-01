@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 
-namespace MauiSample
+namespace MauiSampleApp
 {
     public partial class AppShell : Shell
     {
