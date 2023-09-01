@@ -15,7 +15,9 @@ namespace MauiSampleApp.Avalonia.Views;
 
 public partial class CompositionPage : UserControl
 {
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
     private ImplicitAnimationCollection? _implicitAnimations;
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 
     public CompositionPage()
     {
@@ -25,7 +27,7 @@ public partial class CompositionPage : UserControl
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-        this.Get<ItemsControl>("Items").Items = CreateColorItems();
+        //this.Get<ItemsControl>("Items").Items = CreateColorItems(); // TODO
     }
 
     private List<CompositionPageColorItem> CreateColorItems()

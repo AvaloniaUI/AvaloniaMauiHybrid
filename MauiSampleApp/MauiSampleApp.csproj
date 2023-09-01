@@ -28,7 +28,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-        <WindowsPackageType Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">None</WindowsPackageType>
+        <!--<WindowsPackageType Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">None</WindowsPackageType>-->
+        <!--<ApplicationManifest>Platforms\Windows\app.manifest</ApplicationManifest>-->
+        <DefaultLanguage>en</DefaultLanguage>
     </PropertyGroup>
 
 	<ItemGroup>
@@ -54,8 +56,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MauiApp.xaml.cs">
+	    <DependentUpon>MauiApp.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="AvaloniaApp.axaml.cs">
 	    <DependentUpon>AvaloniaApp.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Platforms\Windows\App.xaml.cs">
+	    <DependentUpon>App.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

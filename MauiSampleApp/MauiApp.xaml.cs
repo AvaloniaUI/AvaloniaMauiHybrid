@@ -1,8 +1,8 @@
 ﻿namespace MauiSampleApp
 {
-    public partial class App : Application
+    public partial class MauiApp : Application
     {
-        public App()
+        public MauiApp()
         {
             InitializeComponent();
 

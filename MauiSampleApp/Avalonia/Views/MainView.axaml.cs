@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace MauiSampleApp.Avalonia.Views
 {
-    public class MainView : UserControl
+    public partial class MainView : UserControl
     {
         public MainView()
         {

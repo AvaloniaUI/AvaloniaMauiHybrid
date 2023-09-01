@@ -7,6 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Maui", "Avalonia.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSampleApp", "MauiSampleApp\MauiSampleApp.csproj", "{6F55A510-234E-48CF-92B3-338E89E5A954}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0310D7BD-569B-41D5-BA8C-6711C32FBE09}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +26,7 @@ Global
 		{CD6CAB48-9C52-48CC-90BC-46D6F079F0CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F55A510-234E-48CF-92B3-338E89E5A954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F55A510-234E-48CF-92B3-338E89E5A954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F55A510-234E-48CF-92B3-338E89E5A954}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{6F55A510-234E-48CF-92B3-338E89E5A954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F55A510-234E-48CF-92B3-338E89E5A954}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

@@ -1,5 +1,7 @@
 ﻿namespace Avalonia.Maui
 {
+    using Avalonia;
+
     public static class AppHostBuilderExtensions
     {
         public static MauiAppBuilder UseAvalonia<TApp>(this MauiAppBuilder builder, Action<AppBuilder> customizeBuilder) where TApp : Application, new()
@@ -10,6 +12,11 @@
             avaloniaBuilder.UseAndroid();
 #elif IOS
             avaloniaBuilder.UseiOS();
+#elif WINDOWS
+            //Avalonia.Win32ApplicationExtensions
+            avaloniaBuilder.UseWin32();
+#else
+#error missing use for platform
 #endif
             var lifetime = new MauiApplicationLifetime();
 
