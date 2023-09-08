@@ -74,8 +74,14 @@
 	<ItemGroup>
 	  <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.4" />
 	</ItemGroup>
-    
-	<ItemGroup>
+
+    <!-- https://github.com/xamarin/AndroidX/issues/752 -->
+    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+        <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.2" />
+        <PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.9.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
 	  <ProjectReference Include="..\Avalonia.Maui\Avalonia.Maui.csproj" />
 	</ItemGroup>
 
