@@ -33,7 +33,7 @@
         <DefaultLanguage>en</DefaultLanguage>
     </PropertyGroup>
 
-	<ItemGroup>
+    <ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
@@ -72,6 +72,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.4" />
+	</ItemGroup>
+    
+	<ItemGroup>
 	  <ProjectReference Include="..\Avalonia.Maui\Avalonia.Maui.csproj" />
 	</ItemGroup>
 
@@ -95,5 +99,4 @@
 	    <DependentUpon>App.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
-
 </Project>

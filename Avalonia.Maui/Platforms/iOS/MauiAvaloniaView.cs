@@ -1,5 +1,4 @@
 ﻿using Avalonia.Maui.Controls;
-using AvaloniaControl = Avalonia.Controls.Control;
 
 namespace Avalonia.Maui.Platforms.iOS
 {
@@ -14,7 +13,7 @@ namespace Avalonia.Maui.Platforms.iOS
 
         public void UpdateContent()
         {
-            Content = _mauiView.Content as AvaloniaControl;
+            Content = _mauiView.Content as Avalonia.Controls.Control;
         }
     }
 }

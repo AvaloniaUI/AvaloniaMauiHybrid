@@ -1,16 +1,10 @@
 using Avalonia.Markup.Xaml;
-using Application = Avalonia.Application;
 
 namespace MauiSample
 {
-    public class AvaloniaApp : Application
+    public class AvaloniaApp : Avalonia.Application
     {
         public override void Initialize()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
-
-        private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
         }
