@@ -23,7 +23,8 @@
 		<PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
 	</ItemGroup>
     <ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-windows'))">
-         <PackageReference Include="Avalonia.Win32" Version="$(AvaloniaVersion)" /> 
+        <PackageReference Include="Avalonia.Win32" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Skia" Version="$(AvaloniaVersion)" /> 
     </ItemGroup>
     <ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />

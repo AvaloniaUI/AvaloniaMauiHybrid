@@ -14,6 +14,7 @@
             avaloniaBuilder.UseiOS();
 #elif WINDOWS
             avaloniaBuilder.UseWin32();
+            avaloniaBuilder.UseSkia();
 #else
 #error missing use for platform
 #endif
