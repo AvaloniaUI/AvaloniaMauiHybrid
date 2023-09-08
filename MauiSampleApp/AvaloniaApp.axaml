@@ -3,6 +3,6 @@
              xmlns:local="using:MauiSample"
              x:Class="MauiSample.AvaloniaApp">
     <Application.Styles>
-        <FluentTheme Mode="Light"/>
+        <!--<FluentTheme Mode="Light"/>-->
     </Application.Styles>
 </Application>

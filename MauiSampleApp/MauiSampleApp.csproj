@@ -52,12 +52,41 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="AppShell.mxaml" />
+	  <None Remove="AvaloniaCompositionPage.mxaml" />
+	  <None Remove="MainPage.mxaml" />
+	  <None Remove="MauiApp.mxaml" />
+	  <None Remove="Resources\Styles\Colors.mxaml" />
+	  <None Remove="Resources\Styles\Styles.mxaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Include="AppShell.mxaml" />
+	  <MauiXaml Include="AvaloniaCompositionPage.mxaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Include="MainPage.mxaml" />
+	  <MauiXaml Include="MauiApp.mxaml" />
+	  <MauiXaml Include="Resources\Styles\Colors.mxaml" />
+	  <MauiXaml Include="Resources\Styles\Styles.mxaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Avalonia.Maui\Avalonia.Maui.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="MauiApp.xaml.cs">
-	    <DependentUpon>MauiApp.xaml</DependentUpon>
+	  <Compile Update="AppShell.mxaml.cs">
+	    <DependentUpon>AppShell.mxaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="AvaloniaCompositionPage.mxaml.cs">
+	    <DependentUpon>AvaloniaCompositionPage.mxaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MainPagem.mxaml.cs">
+	    <DependentUpon>MainPage.mxaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MauiApp.mxaml.cs">
+	    <DependentUpon>MauiApp.mxaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="AvaloniaApp.axaml.cs">
 	    <DependentUpon>AvaloniaApp.axaml</DependentUpon>
@@ -65,12 +94,6 @@
 	  <Compile Update="Platforms\Windows\App.xaml.cs">
 	    <DependentUpon>App.xaml</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="AvaloniaCompositionPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
