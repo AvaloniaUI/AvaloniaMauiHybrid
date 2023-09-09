@@ -40,7 +40,7 @@ namespace MauiSampleApp
             builder.ConfigureMauiHandlers(handlers =>
             {
 #if ANDROID || IOS || WINDOWS
-                handlers.AddHandler(typeof(AvaloniaView), typeof(AvaloniaViewHandler));
+                handlers.AddHandler(typeof(VirtualAvaloniaView), typeof(AvaloniaViewHandler));
 #endif
             });
 

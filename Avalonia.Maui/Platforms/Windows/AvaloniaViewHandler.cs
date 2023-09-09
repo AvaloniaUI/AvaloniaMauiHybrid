@@ -3,7 +3,7 @@ using Microsoft.Maui.Handlers;
 
 namespace Avalonia.Maui.Handlers
 {
-    public partial class AvaloniaViewHandler : ViewHandler<AvaloniaView, Microsoft.UI.Xaml.Controls.Frame>
+    public partial class AvaloniaViewHandler : ViewHandler<VirtualAvaloniaView, Microsoft.UI.Xaml.Controls.Frame>
     {
         private Microsoft.UI.Xaml.Controls.Frame _control;
 
@@ -22,7 +22,7 @@ namespace Avalonia.Maui.Handlers
             base.DisconnectHandler(platformView);
         }
 
-        public static void MapContent(AvaloniaViewHandler handler, AvaloniaView view)
+        public static void MapContent(AvaloniaViewHandler handler, VirtualAvaloniaView view)
         {
             //handler.PlatformView?.UpdateContent();
         }

@@ -2,11 +2,11 @@
 
 namespace Avalonia.Maui.Platforms.iOS
 {
-    public class MauiAvaloniaView : Avalonia.iOS.AvaloniaView
+    public class AvaloniaPlatformView : Avalonia.iOS.AvaloniaView, IAvaloniaPlatformView
     {
-        readonly AvaloniaView _mauiView;
+        readonly VirtualAvaloniaView _mauiView;
 
-        public MauiAvaloniaView(AvaloniaView mauiView)
+        public AvaloniaPlatformView(VirtualAvaloniaView mauiView)
         {
             _mauiView = mauiView;
         }

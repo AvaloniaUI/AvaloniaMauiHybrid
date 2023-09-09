@@ -5,9 +5,9 @@ namespace Avalonia.Maui.Handlers
 {
     public partial class AvaloniaViewHandler
     {
-        public static IPropertyMapper<AvaloniaView, AvaloniaViewHandler> PropertyMapper = new PropertyMapper<AvaloniaView, AvaloniaViewHandler>(ViewHandler.ViewMapper)
+        public static IPropertyMapper<VirtualAvaloniaView, AvaloniaViewHandler> PropertyMapper = new PropertyMapper<VirtualAvaloniaView, AvaloniaViewHandler>(ViewHandler.ViewMapper)
         {
-            [nameof(AvaloniaView.Content)] = MapContent
+            [nameof(VirtualAvaloniaView.Content)] = MapContent
         };
 
         public AvaloniaViewHandler() : base(PropertyMapper)

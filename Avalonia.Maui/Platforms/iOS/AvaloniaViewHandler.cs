@@ -6,28 +6,28 @@ using AvaloniaControl = Avalonia.Controls.Control;
 
 namespace Avalonia.Maui.Handlers
 {
-    public partial class AvaloniaViewHandler : ViewHandler<AvaloniaView, MauiAvaloniaView>
+    public partial class AvaloniaViewHandler : ViewHandler<VirtualAvaloniaView, AvaloniaPlatformView>
     {
-        protected override MauiAvaloniaView CreatePlatformView()
+        protected override AvaloniaPlatformView CreatePlatformView()
         {
-            return new MauiAvaloniaView(VirtualView);
+            return new AvaloniaPlatformView(VirtualView);
         }
 
-        protected override void ConnectHandler(MauiAvaloniaView platformView)
+        protected override void ConnectHandler(AvaloniaPlatformView platformView)
         {
             base.ConnectHandler(platformView);
 
             platformView.Content = VirtualView.Content as AvaloniaControl;
         }
 
-        protected override void DisconnectHandler(MauiAvaloniaView platformView)
+        protected override void DisconnectHandler(AvaloniaPlatformView platformView)
         {
             platformView.Dispose();
 
             base.DisconnectHandler(platformView);
         }
 
-        public static void MapContent(AvaloniaViewHandler handler, AvaloniaView view)
+        public static void MapContent(AvaloniaViewHandler handler, VirtualAvaloniaView view)
         {
             handler.PlatformView?.UpdateContent();
         }

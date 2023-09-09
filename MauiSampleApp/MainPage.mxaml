@@ -10,21 +10,21 @@
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="5">Controls</Label>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Buttons</Label>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <maui:VirtualAvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ava:Button Content="Avalonia Button"/>
-            </maui:AvaloniaView>
+            </maui:VirtualAvaloniaView>
             <Button Text="Maui Button"/>
         </StackLayout>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Toggles</Label>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <maui:VirtualAvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ava:ToggleSwitch Content="Avalonia Switch"/>
-            </maui:AvaloniaView>
+            </maui:VirtualAvaloniaView>
             <Switch/>
         </StackLayout>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Radio Button</Label>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <maui:VirtualAvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ava:StackPanel>
                     <ava:StackPanel.Children>
                         <ava:RadioButton GroupName="Radio" Content="Avalonia Radio 1"/>
@@ -32,7 +32,7 @@
                         <ava:RadioButton GroupName="Radio"  Content="Avalonia Radio 3"/>
                     </ava:StackPanel.Children>
                 </ava:StackPanel>
-            </maui:AvaloniaView>
+            </maui:VirtualAvaloniaView>
             <StackLayout>
                 <RadioButton Content="Maui Radio 1" GroupName="Radio"/>
                 <RadioButton Content="Maui Radio 2" GroupName="Radio"/>

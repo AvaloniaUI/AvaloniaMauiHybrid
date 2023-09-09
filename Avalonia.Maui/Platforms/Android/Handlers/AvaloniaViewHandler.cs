@@ -1,31 +1,30 @@
 ﻿using Avalonia.Layout;
 using Avalonia.Maui.Platforms.Android.Handlers;
 using Microsoft.Maui.Handlers;
-using AvaloniaView = Avalonia.Maui.Controls.AvaloniaView;
 
 namespace Avalonia.Maui.Handlers
 {
-    public partial class AvaloniaViewHandler : ViewHandler<AvaloniaView, MauiAvaloniaView>
+    public partial class AvaloniaViewHandler : ViewHandler<Avalonia.Maui.Controls.VirtualAvaloniaView, AvaloniaPlatformView>
     {
-        protected override MauiAvaloniaView CreatePlatformView()
+        protected override AvaloniaPlatformView CreatePlatformView()
         {
-            return new MauiAvaloniaView(Context, VirtualView);
+            return new AvaloniaPlatformView(Context, VirtualView);
         }
 
-        protected override void ConnectHandler(MauiAvaloniaView platformView)
+        protected override void ConnectHandler(AvaloniaPlatformView platformView)
         {
             base.ConnectHandler(platformView);
 
             platformView.Content = VirtualView.Content;
         }
 
-        protected override void DisconnectHandler(MauiAvaloniaView platformView)
+        protected override void DisconnectHandler(AvaloniaPlatformView platformView)
         {
             platformView.Dispose();
             base.DisconnectHandler(platformView);
         }
 
-        public static void MapContent(AvaloniaViewHandler handler, AvaloniaView view)
+        public static void MapContent(AvaloniaViewHandler handler, Controls.VirtualAvaloniaView view)
         {
             handler.PlatformView?.UpdateContent();
         }

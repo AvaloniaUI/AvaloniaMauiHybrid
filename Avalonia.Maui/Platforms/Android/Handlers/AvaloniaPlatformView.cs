@@ -4,11 +4,11 @@ using Color = Android.Graphics.Color;
 
 namespace Avalonia.Maui.Platforms.Android.Handlers
 {
-    public class MauiAvaloniaView : Avalonia.Android.AvaloniaView
+    public class AvaloniaPlatformView : Avalonia.Android.AvaloniaView, IAvaloniaPlatformView
     {
-        readonly AvaloniaView _mauiView;
+        readonly VirtualAvaloniaView _mauiView;
 
-        public MauiAvaloniaView(Context context, AvaloniaView mauiView) : base(context)
+        public AvaloniaPlatformView(Context context, VirtualAvaloniaView mauiView) : base(context)
         {
             _mauiView = mauiView;
 
