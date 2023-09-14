@@ -11,10 +11,8 @@
 #elif IOS
             avaloniaBuilder.UseiOS();
 #endif
-            var lifetime = new MauiApplicationLifetime();
 
-            avaloniaBuilder.SetupWithLifetime(lifetime);
-
+            avaloniaBuilder.SetupWithoutStarting();
             return builder;
         }
     }

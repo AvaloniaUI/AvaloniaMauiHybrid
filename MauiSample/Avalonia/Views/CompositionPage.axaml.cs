@@ -25,7 +25,7 @@ public partial class CompositionPage : UserControl
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-        this.Get<ItemsControl>("Items").Items = CreateColorItems();
+        this.Get<ItemsControl>("Items").ItemsSource = CreateColorItems();
     }
 
     private List<CompositionPageColorItem> CreateColorItems()
