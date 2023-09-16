@@ -2,6 +2,7 @@ using Avalonia;
 using Foundation;
 using Avalonia.iOS;
 using Avalonia.Maui;
+using UIKit;
 
 namespace AvaloniaSample.iOS;
 
@@ -13,6 +14,7 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>
 {
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
+        Window = new UIWindow(); // revert after https://github.com/AvaloniaUI/Avalonia/pull/12915
         return base.CustomizeAppBuilder(builder)
             .WithMaui<AvaloniaSample.Maui.MauiApplication>();
     }
