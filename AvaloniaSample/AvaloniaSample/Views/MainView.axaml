@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:AvaloniaSample.ViewModels"
+             xmlns:maui="using:AvaloniaSample.Maui"
+             xmlns:controls="using:Avalonia.Maui.Controls"
+             x:Class="AvaloniaSample.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <StackPanel>
+    <TextBlock Text="Avalonia:" />
+    <Button Content="Avalonia Button" />
+    
+    <TextBlock Text="MAUI Button:" />
+    <controls:MauiControlHost Height="50">
+      <maui:MauiPage />
+    </controls:MauiControlHost>
+  </StackPanel>
+</UserControl>

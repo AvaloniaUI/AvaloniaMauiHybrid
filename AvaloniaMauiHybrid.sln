@@ -16,6 +16,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AvaloniaSample", "AvaloniaSample", "{10E5B37C-47D1-498B-AD9D-9A281064C091}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{31E88003-6C5B-41F7-8A36-CBFE095CA760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaSample", "AvaloniaSample\AvaloniaSample\AvaloniaSample.csproj", "{5B52DC9E-B2D8-444E-8CA7-102FD762675F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaSample.Android", "AvaloniaSample\AvaloniaSample.Android\AvaloniaSample.Android.csproj", "{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaSample.iOS", "AvaloniaSample\AvaloniaSample.iOS\AvaloniaSample.iOS.csproj", "{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +42,30 @@ Global
 		{CD6CAB48-9C52-48CC-90BC-46D6F079F0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD6CAB48-9C52-48CC-90BC-46D6F079F0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD6CAB48-9C52-48CC-90BC-46D6F079F0CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B52DC9E-B2D8-444E-8CA7-102FD762675F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B52DC9E-B2D8-444E-8CA7-102FD762675F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B52DC9E-B2D8-444E-8CA7-102FD762675F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B52DC9E-B2D8-444E-8CA7-102FD762675F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2803DA96-B1F5-490A-A82B-82C073DE4767}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2634557-8A3C-4062-9480-3C6A5A4CC147} = {31E88003-6C5B-41F7-8A36-CBFE095CA760}
+		{10E5B37C-47D1-498B-AD9D-9A281064C091} = {31E88003-6C5B-41F7-8A36-CBFE095CA760}
+		{5B52DC9E-B2D8-444E-8CA7-102FD762675F} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
+		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
+		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
 	EndGlobalSection
 EndGlobal

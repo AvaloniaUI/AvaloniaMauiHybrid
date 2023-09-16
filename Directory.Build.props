@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
     <AvaloniaVersion>11.0.0</AvaloniaVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 </Project>
