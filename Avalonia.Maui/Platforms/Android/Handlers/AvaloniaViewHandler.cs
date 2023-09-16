@@ -1,4 +1,5 @@
-﻿using Avalonia.Layout;
+﻿#if ANDROID
+using Avalonia.Layout;
 using Avalonia.Maui.Platforms.Android.Handlers;
 using Microsoft.Maui.Handlers;
 using AvaloniaView = Avalonia.Maui.Controls.AvaloniaView;
@@ -47,3 +48,4 @@ namespace Avalonia.Maui.Handlers
         }
     }
 }
+#endif

@@ -1,8 +1,11 @@
-﻿using System.Runtime.Versioning;
+﻿#if ANDROID
+using System;
+using System.Runtime.Versioning;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Avalonia.Android;
+using Microsoft.Maui;
 
 namespace Avalonia.Maui.Platforms.Android
 {
@@ -27,3 +30,4 @@ namespace Avalonia.Maui.Platforms.Android
         }
     }
 }
+#endif

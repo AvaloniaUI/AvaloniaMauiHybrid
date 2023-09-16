@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿#if ANDROID
+using Android.Content;
 using Avalonia.Maui.Controls;
 using Color = Android.Graphics.Color;
 
@@ -21,3 +22,4 @@ namespace Avalonia.Maui.Platforms.Android.Handlers
         }
     }
 }
+#endif

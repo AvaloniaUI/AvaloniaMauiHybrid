@@ -1,4 +1,6 @@
-﻿namespace Avalonia.Maui.Controls
+﻿using Microsoft.Maui.Controls;
+
+namespace Avalonia.Maui.Controls
 {
     [ContentProperty(nameof(Content))]
     public class AvaloniaView : View
