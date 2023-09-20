@@ -10,25 +10,39 @@ namespace Avalonia.Maui.Controls;
 
 public class MauiControlHost : NativeControlHost
 {
-    private ContentPage? _contentPage;
+    private View? _content;
+    private ContentPage? _page;
 
-    public static readonly DirectProperty<MauiControlHost, ContentPage?> ContentPageProperty =
-        AvaloniaProperty.RegisterDirect<MauiControlHost, ContentPage?>(nameof(ContentPage), o => o.ContentPage,
-            (o, v) => o.ContentPage = v);
+    public static readonly DirectProperty<MauiControlHost, View?> ContentProperty =
+        AvaloniaProperty.RegisterDirect<MauiControlHost, View?>(nameof(ContentPage), o => o.Content,
+            (o, v) => o.Content = v);
 
-    [Content] // Invalidate native control on this property changed.
-    public ContentPage? ContentPage
+    [Content]
+    public View? Content
     {
-        get => _contentPage;
-        set => SetAndRaise(ContentPageProperty, ref _contentPage, value);
+        get => _content;
+        set => SetAndRaise(ContentProperty, ref _content, value);
+    }
+
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+
+        if (change.Property == ContentProperty)
+        {
+            if (_page is not null)
+            {
+                _page.Content = change.GetNewValue<View?>();
+            }
+        }
     }
 
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-        if (ContentPage is null)
+        _page = new ContentPage
         {
-            return base.CreateNativeControlCore(parent);
-        }
+            Content = Content
+        };
 
         var app = Microsoft.Maui.Controls.Application.Current!;
 #if ANDROID
@@ -37,10 +51,10 @@ public class MauiControlHost : NativeControlHost
 #else
         var mauiContext = app.Handler!.MauiContext!;
 #endif
+        
+        _page.Parent = app.Windows[0];
 
-        ContentPage.Parent = app.Windows[0];
-
-        var native = ContentPage.ToPlatform(mauiContext);
+        var native = _page.ToPlatform(mauiContext);
 
 #if ANDROID
         return new Android.AndroidViewControlHandle(native);
@@ -49,5 +63,17 @@ public class MauiControlHost : NativeControlHost
 #else
         return base.CreateNativeControlCore(parent);
 #endif
+    }
+
+    protected override void DestroyNativeControlCore(IPlatformHandle control)
+    {
+        if (_page is not null)
+        {
+            _page.Content = null;
+            _page.Parent = null;
+            _page = null;
+        }
+
+        base.DestroyNativeControlCore(control);
     }
 }
