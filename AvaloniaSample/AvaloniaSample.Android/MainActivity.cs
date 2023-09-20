@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.Maui;
+using CommunityToolkit.Maui;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace AvaloniaSample.Android;
 
@@ -17,6 +19,9 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         return base.CustomizeAppBuilder(builder)
-            .WithMaui<AvaloniaSample.Maui.MauiApplication>(this);
+            .WithMaui<AvaloniaSample.Maui.MauiApplication>(this, b => b
+                .ConfigureSyncfusionCore()
+                .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMediaElement());
     }
 }

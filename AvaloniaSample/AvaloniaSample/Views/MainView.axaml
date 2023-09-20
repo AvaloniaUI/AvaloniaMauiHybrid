@@ -1,17 +1,48 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:AvaloniaSample.ViewModels"
-             xmlns:maui="using:AvaloniaSample.Maui"
              xmlns:controls="using:Avalonia.Maui.Controls"
+             xmlns:mauiControls="using:Microsoft.Maui.Controls"
+             xmlns:progressBar="using:Syncfusion.Maui.ProgressBar"
+             xmlns:player="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui.MediaElement"
              x:Class="AvaloniaSample.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <StackPanel>
-    <TextBlock Text="Avalonia:" />
-    <Button Content="Avalonia Button" />
+  <Grid RowDefinitions="Auto, Auto, 120, Auto, *">
+    <UniformGrid Grid.Row="0"
+                 Columns="2"
+                 Margin="10">
+      <TextBlock Text="Avalonia:" />
+      <TextBlock Text="Maui:" />
+      <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+      <controls:MauiControlHost Height="40">
+        <mauiControls:Button Text="Button" />
+      </controls:MauiControlHost>
+    </UniformGrid>
     
-    <TextBlock Text="MAUI Button:" />
-    <controls:MauiControlHost Height="50">
-      <maui:MauiPage />
+    <TextBlock Grid.Row="1"
+               Text="MAUI Syncfusion:" Margin="10, 0" />
+    <controls:MauiControlHost Grid.Row="2"
+                              Margin="10">
+      <progressBar:SfCircularProgressBar WidthRequest="100"
+                                         HeightRequest="100"
+                                         AnimationDuration="2000"
+                                         Progress="100"
+                                         IsIndeterminate="True"
+                                         ThicknessUnit="Factor"
+                                         TrackThickness="0.05"
+                                         ProgressRadiusFactor="0.85"
+                                         ProgressThickness="0.05">
+      </progressBar:SfCircularProgressBar>
     </controls:MauiControlHost>
-  </StackPanel>
+    
+    
+    <TextBlock Grid.Row="3"
+               Text="MAUI CommunityToolkit:" Margin="10, 0" />
+    <controls:MauiControlHost Grid.Row="4"
+                              Margin="10">
+      <player:MediaElement Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                           ShouldShowPlaybackControls="True" />
+    </controls:MauiControlHost>
+  </Grid>
 </UserControl>
