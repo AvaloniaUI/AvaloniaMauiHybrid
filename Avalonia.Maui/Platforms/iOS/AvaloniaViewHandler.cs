@@ -1,7 +1,9 @@
-﻿using Avalonia.Layout;
+﻿#if IOS
+using Avalonia.Layout;
 using Avalonia.Maui.Controls;
 using Microsoft.Maui.Handlers;
 using Avalonia.Maui.Platforms.iOS;
+using Microsoft.Maui.Controls;
 using AvaloniaControl = Avalonia.Controls.Control;
 
 namespace Avalonia.Maui.Handlers
@@ -52,3 +54,4 @@ namespace Avalonia.Maui.Handlers
         }
     }
 }
+#endif

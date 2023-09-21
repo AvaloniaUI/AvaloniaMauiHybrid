@@ -1,10 +1,11 @@
-﻿#if IOS
+﻿#if !ANDROID && !IOS && !WINDOWS && !MACOS && !MACCATALYST
+using Avalonia.Controls;
 using Avalonia.Maui.Controls;
 using AvaloniaControl = Avalonia.Controls.Control;
 
-namespace Avalonia.Maui.Platforms.iOS
+namespace Avalonia.Maui.Platforms.Standard
 {
-    public class MauiAvaloniaView : Avalonia.iOS.AvaloniaView
+    public class MauiAvaloniaView : ContentControl
     {
         readonly AvaloniaView _mauiView;
 

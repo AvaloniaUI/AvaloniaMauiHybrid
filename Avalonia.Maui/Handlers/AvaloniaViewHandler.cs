@@ -1,4 +1,5 @@
 ﻿using Avalonia.Maui.Controls;
+using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 
 namespace Avalonia.Maui.Handlers

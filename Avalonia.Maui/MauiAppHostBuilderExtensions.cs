@@ -1,6 +1,9 @@
-﻿namespace Avalonia.Maui
+﻿using System;
+using Microsoft.Maui.Hosting;
+
+namespace Avalonia.Maui
 {
-    public static class AppHostBuilderExtensions
+    public static class MauiAppHostBuilderExtensions
     {
         public static MauiAppBuilder UseAvalonia<TApp>(this MauiAppBuilder builder, Action<AppBuilder> customizeBuilder) where TApp : Application, new()
         {
