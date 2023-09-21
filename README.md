@@ -67,7 +67,8 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 ### Using MAUI Essentials inside of the Avalonia app
 
 1. Follow the same steps as in [Embedding MAUI controls inside of the Avalonia app](#embedding-maui-controls-inside-of-the-avalonia-app) except the last one.
-2. Now you can call Essentials API from Avalonia code:
+2. Depending on MAUI version, you might need to add `<UseMauiEssentials>true</UseMauiEssentials>` to your csproj file as well.
+3. Now you can call Essentials API from Avalonia code:
 ```csharp
 private async void Button_OnClick(object? sender, RoutedEventArgs e)
 {
