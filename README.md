@@ -1,4 +1,4 @@
-# AvaloniaMauiHybrid
+# Avalonia.Maui Hybrid
 
 This repository contains source code for the integration of Avalonia and MAUI frameworks, supporting the following scenarios:
 - Embedding Avalonia controls inside MAUI pages.
@@ -66,7 +66,7 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 
 ### Using MAUI Essentials inside of the Avalonia app
 
-1. Follow the same steps as in [Embedding MAUI controls inside of the Avalonia app](#embedding-maui-controls-inside-of-the-avalonia-app) except the last one.
+1. Follow the same steps as in [Embedding MAUI controls inside of the Avalonia app](#embedding-maui-controls-inside-of-the-avalonia-app) except for the last one.
 2. Depending on MAUI version, you might need to add `<UseMauiEssentials>true</UseMauiEssentials>` to your csproj file as well.
 3. Now you can call Essentials API from Avalonia code:
 ```csharp
