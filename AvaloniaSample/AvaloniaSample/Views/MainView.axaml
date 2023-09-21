@@ -22,7 +22,8 @@
     
     <TextBlock Grid.Row="1"
                Text="MAUI Syncfusion:" Margin="10, 0" />
-    <controls:MauiControlHost Grid.Row="2"
+    <controls:MauiControlHost x:Name="ProgressBarHost"
+                              Grid.Row="2"
                               Margin="10">
       <progressBar:SfCircularProgressBar WidthRequest="100"
                                          HeightRequest="100"
@@ -42,6 +43,7 @@
     <controls:MauiControlHost Grid.Row="4"
                               Margin="10">
       <player:MediaElement Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                           PositionChanged="MediaElement_OnPositionChanged"
                            ShouldShowPlaybackControls="True" />
     </controls:MauiControlHost>
   </Grid>
