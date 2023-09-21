@@ -1,20 +1,19 @@
 # AvaloniaMauiHybrid
 
-This repository contains source code for the integration of Avalonia and MAUI frameworks.
-Currently supported scenarios:
-- Embedding Avalonia controls inside of the MAUI pages.
-- Embedding MAUI controls inside of the Avalonia views.
+This repository contains source code for the integration of Avalonia and MAUI frameworks, supporting the following scenarios:
+- Embedding Avalonia controls inside MAUI pages.
+- Embedding MAUI controls inside Avalonia views.
 - Calling MAUI Essentials APIs from Avalonia.
 
-Supported OS: iOS and Android only.
-- For Windows support see https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/7 open issue.
-- For macOS support see https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/10 open issue.
-- MAUI doesn't support Browser platform, so we can't do much here. For Blazor integration, see [Avalonia.Browser.Blazor](https://www.nuget.org/packages/Avalonia.Browser.Blazor).
-- Avalonia 11.1 is going to have Tizen backend, so it will be possible in the future.
+**Supported OS**: iOS and Android only.
+- For Windows support, please refer to the [open issue #7](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/7).
+- For macOS support, please refer to the [open issue #10](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/10).
+- Note that MAUI doesn't support the Browser platform. For Blazor integration, see [Avalonia.Browser.Blazor](https://www.nuget.org/packages/Avalonia.Browser.Blazor).
+- Future support for Tizen backend will be possible with Avalonia 11.1.
 
 ## Quick Start
 
-### Embedding Avalonia controls inside of the MAUI app
+### Embedding Avalonia Controls Inside MAUI
 
 1. Start with a normal MAUI project.
 2. Install https://www.nuget.org/packages/Avalonia.Maui nuget package to your project.
