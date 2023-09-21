@@ -22,7 +22,7 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>
         AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback);
 
         return base.CustomizeAppBuilder(builder)
-            .WithMaui<AvaloniaSample.Maui.MauiApplication>(b => b
+            .UseMaui<AvaloniaSample.Maui.MauiApplication>(this, b => b
                 .ConfigureSyncfusionCore()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement());

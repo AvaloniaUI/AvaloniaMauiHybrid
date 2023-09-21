@@ -19,7 +19,7 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         return base.CustomizeAppBuilder(builder)
-            .WithMaui<AvaloniaSample.Maui.MauiApplication>(this, b => b
+            .UseMaui<AvaloniaSample.Maui.MauiApplication>(this, b => b
                 .ConfigureSyncfusionCore()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement());

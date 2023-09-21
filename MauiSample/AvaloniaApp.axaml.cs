@@ -10,11 +10,6 @@ namespace MauiSample
             AvaloniaXamlLoader.Load(this);
         }
 
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
-
         public override void OnFrameworkInitializationCompleted()
         {
             base.OnFrameworkInitializationCompleted();

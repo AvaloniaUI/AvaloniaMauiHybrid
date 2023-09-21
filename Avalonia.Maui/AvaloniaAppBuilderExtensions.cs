@@ -22,10 +22,13 @@ namespace Avalonia.Maui;
 public static class AvaloniaAppBuilderExtensions
 {
 #if ANDROID
-    public static AppBuilder WithMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure  = null)
+    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure  = null)
+        where TMauiApplication : Microsoft.Maui.Controls.Application
+#elif IOS
+    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, IUIApplicationDelegate applicationDelegate, Action<MauiAppBuilder>? configure  = null)
         where TMauiApplication : Microsoft.Maui.Controls.Application
 #else
-    public static AppBuilder WithMaui<TMauiApplication>(this AppBuilder appBuilder, Action<MauiAppBuilder>? configure  = null)
+    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, Action<MauiAppBuilder>? configure  = null)
         where TMauiApplication : Microsoft.Maui.Controls.Application
 #endif
     {
@@ -41,8 +44,8 @@ public static class AvaloniaAppBuilderExtensions
 	                .AddSingleton<global::Android.Content.Context>(activity)
 	                .AddSingleton(activity)
 #elif IOS
-	                .AddSingleton(UIApplication.SharedApplication.Delegate)
-	                .AddSingleton<UIWindow>(_ => UIApplication.SharedApplication.Delegate.GetWindow())
+	                .AddSingleton(applicationDelegate ?? UIApplication.SharedApplication.Delegate)
+	                .AddSingleton<UIWindow>(static p => p.GetService<IUIApplicationDelegate>()!.GetWindow())
 #endif
                     .AddSingleton<IMauiInitializeService, MauiEmbeddingInitializer>();
 
@@ -69,7 +72,7 @@ public static class AvaloniaAppBuilderExtensions
 		var rootContext = new MauiContext(mauiApp.Services);
 	    var services = mauiApp.Services;
 #if IOS
-	    var platformApplication = UIApplication.SharedApplication.Delegate;
+	    var platformApplication = mauiApp.Services.GetRequiredService<IUIApplicationDelegate>();
 	    var window = platformApplication.GetWindow();
 	    if (window == null)
 	    {   // hack for older Avalonia versions.

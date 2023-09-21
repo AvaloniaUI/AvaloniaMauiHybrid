@@ -1,22 +1,32 @@
 ﻿using System;
+using Avalonia.Maui.Controls;
+using Avalonia.Maui.Handlers;
 using Microsoft.Maui.Hosting;
 
 namespace Avalonia.Maui
 {
     public static class MauiAppHostBuilderExtensions
     {
-        public static MauiAppBuilder UseAvalonia<TApp>(this MauiAppBuilder builder, Action<AppBuilder> customizeBuilder) where TApp : Application, new()
+        public static MauiAppBuilder UseAvalonia<TApp>(this MauiAppBuilder builder, Action<AppBuilder>? customizeBuilder = null) where TApp : Application, new()
         {
             var avaloniaBuilder = AppBuilder.Configure<TApp>();
-            customizeBuilder(avaloniaBuilder);
 #if ANDROID
             avaloniaBuilder.UseAndroid();
 #elif IOS
             avaloniaBuilder.UseiOS();
 #endif
 
+            customizeBuilder?.Invoke(avaloniaBuilder);
+
             avaloniaBuilder.SetupWithoutStarting();
-            return builder;
+
+            return builder
+                .ConfigureMauiHandlers(handlers =>
+                {
+#if ANDROID || IOS
+                    handlers.AddHandler(typeof(AvaloniaView), typeof(AvaloniaViewHandler));
+#endif
+                });;
         }
     }
 }
