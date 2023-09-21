@@ -15,6 +15,8 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 
 ### Embedding Avalonia Controls Inside MAUI
 
+Demo project to try: https://github.com/AvaloniaUI/AvaloniaMauiHybrid/tree/main/MauiSample
+
 1. Start with a normal MAUI project.
 2. Install https://www.nuget.org/packages/Avalonia.Maui nuget package to your project.
 3. You need to have both Avalonia and MAUI Application classes created. You can copy [AvaloniaApp.axaml](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/blob/main/MauiSample/AvaloniaApp.axaml) + [AvaloniaApp.axaml.cs](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/blob/main/MauiSample/AvaloniaApp.axaml.cs) or reuse your own application with properties.
@@ -38,6 +40,8 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 
 
 ### Embedding MAUI controls inside of the Avalonia app
+
+Demo project to try: https://github.com/AvaloniaUI/AvaloniaMauiHybrid/tree/main/AvaloniaSample
 
 1. Start with avalonia.xplat template (see https://github.com/AvaloniaUI/avalonia-dotnet-templates). We will only use Android, iOS and shared projects.
 2. Install https://www.nuget.org/packages/Avalonia.Maui nuget package to your project.
