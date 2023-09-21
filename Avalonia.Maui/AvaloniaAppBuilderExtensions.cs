@@ -9,7 +9,12 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Platform;
 using MauiWindow = Microsoft.Maui.Controls.Window;
 #if IOS
+using PlatformWindow = UIKit.UIWindow;
 using UIKit;
+#elif ANDROID
+using PlatformWindow = global::Android.Content.Context;
+#else
+using PlatformWindow = System.Object;
 #endif
 
 namespace Avalonia.Maui;
@@ -53,22 +58,29 @@ public static class AvaloniaAppBuilderExtensions
 	    var iApp = mauiApp.Services.GetRequiredService<IApplication>();
 
 #if ANDROID
-	    var activity = mauiApp.Services.GetRequiredService <global::Android.App.Activity>();
+	    var window = mauiApp.Services.GetRequiredService <global::Android.App.Activity>();
 	    var scope = mauiApp.Services.CreateScope();
-	    var platformApplication = activity.Application!;
+	    var platformApplication = window.Application!;
 	    var services = scope.ServiceProvider;
-	    var rootContext = new MauiContext(scope.ServiceProvider, activity);
+	    var rootContext = new MauiContext(scope.ServiceProvider, window);
 
-	    Microsoft.Maui.ApplicationModel.Platform.Init(activity, null);
+	    Microsoft.Maui.ApplicationModel.Platform.Init(window, null);
 #else
 		var rootContext = new MauiContext(mauiApp.Services);
 	    var services = mauiApp.Services;
 #if IOS
 	    var platformApplication = UIApplication.SharedApplication.Delegate;
+	    var window = platformApplication.GetWindow();
+	    if (window == null)
+	    {   // hack for older Avalonia versions.
+		    window = new UIWindow();
+		    platformApplication.SetWindow(window);
+	    }
 
 		Microsoft.Maui.ApplicationModel.Platform.Init(() => platformApplication.GetWindow().RootViewController!);
 #else
 	    var platformApplication = new object();
+	    var window = new object();
 #endif
 #endif
 
@@ -84,12 +96,12 @@ public static class AvaloniaAppBuilderExtensions
 	    if (iApp is Microsoft.Maui.Controls.Application { Handler.MauiContext: not null } app
 	        && iApp.Windows is List<MauiWindow> windows)
 	    {
-		    var virtualWindow = CreateVirtualWindow(app);
+		    var virtualWindow = CreateVirtualWindow(app, window);
 		    windows.Add(virtualWindow);
 	    }
     }
     
-    private static Window CreateVirtualWindow(Microsoft.Maui.Controls.Application app)
+    private static Window CreateVirtualWindow(Microsoft.Maui.Controls.Application app, PlatformWindow? window)
     {
 #if ANDROID
     	var services = app.Handler!.MauiContext!.Services;
@@ -98,26 +110,14 @@ public static class AvaloniaAppBuilderExtensions
 	    var context = app.Handler.MauiContext;
 #endif
 
-	    // Create an Application Main Page and initialize a Handler with the Maui Context
-	    var page = new ContentPage();
-	    app.MainPage = page;
-	    _ = page.ToPlatform(context);
-
 	    // Create a Maui Window and initialize a Handler shim. This will expose the actual Application Window
 	    var virtualWindow = new MauiWindow();
 	    virtualWindow.Handler = new EmbeddedWindowHandler
 	    {
-#if IOS
-		    PlatformView = context.Services.GetRequiredService<UIWindow>(),
-#elif ANDROID
-    		PlatformView = context.Services.GetRequiredService<global::Android.App.Activity>(),
-#elif WINDOWS
-    		PlatformView = context.Services.GetRequiredService<Microsoft.UI.Xaml.Window>(),
-#endif
+    		PlatformView = window,
 		    VirtualView = virtualWindow,
 		    MauiContext = context
 	    };
-	    virtualWindow.Page = page;
 	    return virtualWindow;
     }
     

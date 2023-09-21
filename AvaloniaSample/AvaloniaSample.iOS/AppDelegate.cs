@@ -20,8 +20,7 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>
         // See https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/mediaelement#bypassing-the-ios-silent-switch
         AVAudioSession.SharedInstance().SetActive(true);
         AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback);
-        
-        Window = new UIWindow(); // revert after https://github.com/AvaloniaUI/Avalonia/pull/12915
+
         return base.CustomizeAppBuilder(builder)
             .WithMaui<AvaloniaSample.Maui.MauiApplication>(b => b
                 .ConfigureSyncfusionCore()
