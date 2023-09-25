@@ -1,3 +1,6 @@
+
+![Hybrid_Header](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/assets/552074/3e43d1c1-ff2a-40ef-89d5-a8cc34ed732b)
+
 # Avalonia.Maui Hybrid
 
 This repository contains source code for the integration of Avalonia and MAUI frameworks, supporting the following scenarios:
