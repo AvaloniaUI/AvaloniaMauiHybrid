@@ -113,15 +113,17 @@ public static class AvaloniaAppBuilderExtensions
 	    var context = app.Handler.MauiContext;
 #endif
 
-	    // Create a Maui Window and initialize a Handler shim. This will expose the actual Application Window
-	    var virtualWindow = new MauiWindow();
-	    virtualWindow.Handler = new EmbeddedWindowHandler
-	    {
-    		PlatformView = window,
-		    VirtualView = virtualWindow,
-		    MauiContext = context
-	    };
-	    return virtualWindow;
+        // Create a Maui Window and initialize a Handler shim. This will expose the actual Application Window
+        var virtualWindow = new MauiWindow();
+        virtualWindow.Handler = new EmbeddedWindowHandler
+        {
+            PlatformView = window,
+            VirtualView = virtualWindow,
+            MauiContext = context
+        };
+        // This ContentPage is necessary only to fool the Xaml Hot Reload.
+        virtualWindow.Page = new ContentPage();
+        return virtualWindow;
     }
     
     private record EmbeddingApplication(IServiceProvider Services, IApplication Application) : IPlatformApplication;
