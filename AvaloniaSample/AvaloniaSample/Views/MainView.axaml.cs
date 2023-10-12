@@ -11,7 +11,7 @@ public partial class MainView : UserControl
 {
     public MainView()
     {
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
     }
 
     private void MediaElement_OnPositionChanged(object? sender, MediaPositionChangedEventArgs e)

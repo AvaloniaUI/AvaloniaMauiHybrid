@@ -19,7 +19,7 @@ public partial class CompositionPage : UserControl
 
     public CompositionPage()
     {
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
