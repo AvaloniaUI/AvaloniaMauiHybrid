@@ -26,7 +26,7 @@
 	<!-- Packaging -->
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
-		<Version>11.0-preview2</Version>
+		<Version>11.0-preview3</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/AvaloniaUI/AvaloniaMauiHybrid</RepositoryUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
