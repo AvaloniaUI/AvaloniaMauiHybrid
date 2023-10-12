@@ -22,7 +22,7 @@ namespace Avalonia.Maui;
 public static class AvaloniaAppBuilderExtensions
 {
 #if ANDROID
-    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure  = null)
+    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure = null)
         where TMauiApplication : Microsoft.Maui.Controls.Application
 #elif IOS
     public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, IUIApplicationDelegate applicationDelegate, Action<MauiAppBuilder>? configure  = null)
@@ -35,14 +35,14 @@ public static class AvaloniaAppBuilderExtensions
         return appBuilder
             .AfterSetup(appBuilder =>
             {
-	            var builder = MauiApp.CreateBuilder()
-		            .UseMauiEmbedding<TMauiApplication>();
-                
+                var builder = MauiApp.CreateBuilder()
+                    .UseMauiEmbedding<TMauiApplication>();
+
                 builder.Services.AddSingleton(appBuilder.Instance!)
 #if ANDROID
-	                .AddSingleton(activity.Application!)
-	                .AddSingleton<global::Android.Content.Context>(activity)
-	                .AddSingleton(activity)
+                    .AddSingleton(activity.Application!)
+                    .AddSingleton<global::Android.Content.Context>(activity)
+                    .AddSingleton(activity)
 #elif IOS
 	                .AddSingleton(applicationDelegate ?? UIApplication.SharedApplication.Delegate)
 	                .AddSingleton<UIWindow>(static p => p.GetService<IUIApplicationDelegate>()!.GetWindow())
@@ -50,7 +50,7 @@ public static class AvaloniaAppBuilderExtensions
                     .AddSingleton<IMauiInitializeService, MauiEmbeddingInitializer>();
 
                 configure?.Invoke(builder);
-                
+
                 var mauiApp = builder.Build();
                 InitializeMauiEmbeddingApp(mauiApp);
             });
@@ -58,16 +58,16 @@ public static class AvaloniaAppBuilderExtensions
 
     private static void InitializeMauiEmbeddingApp(this MauiApp mauiApp)
     {
-	    var iApp = mauiApp.Services.GetRequiredService<IApplication>();
+        var iApp = mauiApp.Services.GetRequiredService<IApplication>();
 
 #if ANDROID
-	    var window = mauiApp.Services.GetRequiredService <global::Android.App.Activity>();
-	    var scope = mauiApp.Services.CreateScope();
-	    var platformApplication = window.Application!;
-	    var services = scope.ServiceProvider;
-	    var rootContext = new MauiContext(scope.ServiceProvider, window);
+        var window = mauiApp.Services.GetRequiredService<global::Android.App.Activity>();
+        var scope = mauiApp.Services.CreateScope();
+        var platformApplication = window.Application!;
+        var services = scope.ServiceProvider;
+        var rootContext = new MauiContext(scope.ServiceProvider, window);
 
-	    Microsoft.Maui.ApplicationModel.Platform.Init(window, null);
+        Microsoft.Maui.ApplicationModel.Platform.Init(window, null);
 #else
 		var rootContext = new MauiContext(mauiApp.Services);
 	    var services = mauiApp.Services;
@@ -87,28 +87,28 @@ public static class AvaloniaAppBuilderExtensions
 #endif
 #endif
 
-	    var scopedServices = rootContext.Services.GetServices<IMauiInitializeScopedService>();
-	    foreach (var service in scopedServices)
-	    {
-		    service.Initialize(rootContext.Services);
-	    }
+        var scopedServices = rootContext.Services.GetServices<IMauiInitializeScopedService>();
+        foreach (var service in scopedServices)
+        {
+            service.Initialize(rootContext.Services);
+        }
 
-	    platformApplication.SetApplicationHandler(iApp, rootContext);
-	    IPlatformApplication.Current = new EmbeddingApplication(services, iApp);
+        platformApplication.SetApplicationHandler(iApp, rootContext);
+        IPlatformApplication.Current = new EmbeddingApplication(services, iApp);
 
-	    if (iApp is Microsoft.Maui.Controls.Application { Handler.MauiContext: not null } app
-	        && iApp.Windows is List<MauiWindow> windows)
-	    {
-		    var virtualWindow = CreateVirtualWindow(app, window);
-		    windows.Add(virtualWindow);
-	    }
+        if (iApp is Microsoft.Maui.Controls.Application { Handler.MauiContext: not null } app
+            && iApp.Windows is List<MauiWindow> windows)
+        {
+            var virtualWindow = CreateVirtualWindow(app, window);
+            windows.Add(virtualWindow);
+        }
     }
-    
+
     private static Window CreateVirtualWindow(Microsoft.Maui.Controls.Application app, PlatformWindow? window)
     {
 #if ANDROID
-    	var services = app.Handler!.MauiContext!.Services;
-    	var context = new MauiContext(services, services.GetRequiredService<global::Android.App.Activity>());
+        var services = app.Handler!.MauiContext!.Services;
+        var context = new MauiContext(services, services.GetRequiredService<global::Android.App.Activity>());
 #else
 	    var context = app.Handler.MauiContext;
 #endif
@@ -125,6 +125,6 @@ public static class AvaloniaAppBuilderExtensions
         virtualWindow.Page = new ContentPage();
         return virtualWindow;
     }
-    
+
     private record EmbeddingApplication(IServiceProvider Services, IApplication Application) : IPlatformApplication;
 }
