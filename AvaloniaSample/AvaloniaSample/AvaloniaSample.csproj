@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia" Version="$(AvaloniaSamplesVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaSamplesVersion)" />
 
     <PackageReference Include="Syncfusion.Maui.Core" version="22.2.5" />
     <PackageReference Include="Syncfusion.Maui.ProgressBar" version="22.2.5" />
