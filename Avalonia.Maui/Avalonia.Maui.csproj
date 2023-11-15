@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios</TargetFrameworks>
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net8.0;net8.0-android;net8.0-ios</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
@@ -14,10 +14,14 @@
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.8.0" />
-    </ItemGroup>
+		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.9.0.1" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Android" Version="2.88.6" />
+		<PackageReference Include="HarfBuzzSharp.NativeAssets.Android" Version="2.8.2.5" />
+	</ItemGroup>
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 		<PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="SkiaSharp.NativeAssets.iOS" Version="2.88.6" />
+		<PackageReference Include="HarfBuzzSharp.NativeAssets.iOS" Version="2.8.2.5" />
 	</ItemGroup>
     <ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
