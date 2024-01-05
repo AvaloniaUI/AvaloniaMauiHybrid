@@ -13,7 +13,8 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 - For macOS support, please refer to the [open issue #10](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/10).
 - Note that MAUI doesn't support the Browser platform. For Blazor integration, see [Avalonia.Browser.Blazor](https://www.nuget.org/packages/Avalonia.Browser.Blazor).
 - Future support for Tizen backend will be possible with Avalonia 11.1.
-
+- You can make an solution that compiles avalonia maui hybrid for mobile targets and compiles without maui hybrid for other plataforsms. See https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/12
+    
 ## Quick Start
 
 ### Embedding Avalonia Controls Inside MAUI
