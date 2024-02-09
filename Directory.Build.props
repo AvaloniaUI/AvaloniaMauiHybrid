@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <AvaloniaSamplesVersion>11.0.5</AvaloniaSamplesVersion>
+    <AvaloniaSamplesVersion>11.0.9</AvaloniaSamplesVersion>
     <!-- 11.0.5 has some critical improvements that we need -->
     <AvaloniaVersion>11.0.5</AvaloniaVersion>
     <Nullable>enable</Nullable>
