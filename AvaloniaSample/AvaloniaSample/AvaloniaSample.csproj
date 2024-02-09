@@ -18,8 +18,12 @@
 
     <PackageReference Include="Syncfusion.Maui.Core" version="22.2.5" />
     <PackageReference Include="Syncfusion.Maui.ProgressBar" version="22.2.5" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
     <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="2.0.0" />
+
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiSamplesVersion)" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiSamplesVersion)" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,7 +9,7 @@
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia.Android" Version="$(AvaloniaSamplesVersion)" />
-    <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiSamplesVersion)" />
   </ItemGroup>
 
   <ItemGroup>

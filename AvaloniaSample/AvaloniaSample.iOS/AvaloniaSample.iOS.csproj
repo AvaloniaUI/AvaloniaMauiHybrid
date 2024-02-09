@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia.iOS" Version="$(AvaloniaSamplesVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiSamplesVersion)" />
   </ItemGroup>
 
   <ItemGroup>

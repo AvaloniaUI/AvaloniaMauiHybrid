@@ -51,6 +51,7 @@
 	  <ProjectReference Include="..\Avalonia.Maui\Avalonia.Maui.csproj" />
 	  <PackageReference Include="Avalonia" Version="$(AvaloniaSamplesVersion)" />
 	  <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaSamplesVersion)" />
+	  <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiSamplesVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>
