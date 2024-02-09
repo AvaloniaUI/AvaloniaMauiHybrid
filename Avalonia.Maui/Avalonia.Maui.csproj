@@ -14,14 +14,9 @@
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.9.0.1" />
-		<PackageReference Include="SkiaSharp.NativeAssets.Android" Version="2.88.6" />
-		<PackageReference Include="HarfBuzzSharp.NativeAssets.Android" Version="2.8.2.5" />
 	</ItemGroup>
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 		<PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="SkiaSharp.NativeAssets.iOS" Version="2.88.6" />
-		<PackageReference Include="HarfBuzzSharp.NativeAssets.iOS" Version="2.8.2.5" />
 	</ItemGroup>
     <ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
@@ -30,7 +25,7 @@
 	<!-- Packaging -->
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
-		<Version>11.0.5</Version>
+		<Version>11.0.6</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/AvaloniaUI/AvaloniaMauiHybrid</RepositoryUrl>
 		<PackageTags>avalonia;avaloniaui;maui;android</PackageTags>
