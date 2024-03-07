@@ -70,7 +70,7 @@ Demo project to try: https://github.com/AvaloniaUI/AvaloniaMauiHybrid/tree/main/
     </UniformGrid>
    ```
    Don't forget about xmlns namespaces here as well: `xmlns:controls="using:Avalonia.Maui.Controls"` and `xmlns:mauiControls="using:Microsoft.Maui.Controls"`
-
+8. If you have "MaterialComponents" or other theme related exception on Android, please visit https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/18.
 
 ### Using MAUI Essentials inside of the Avalonia app
 
