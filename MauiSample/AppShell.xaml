@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiSample"
-    xmlns:pages="clr-namespace:MauiSample.Avalonia.Views"
-    Shell.FlyoutBehavior="Flyout">
+    Shell.FlyoutBehavior="Flyout"
+    Title="MauiSample">
 
     <ShellContent
         Title="Home"
@@ -16,5 +16,4 @@
         Title="Avalonia Composition Page"
         ContentTemplate="{DataTemplate local:AvaloniaCompositionPage}"
         Route="Composition" />
-
 </Shell>

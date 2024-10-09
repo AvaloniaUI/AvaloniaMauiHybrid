@@ -9,16 +9,16 @@
         <Label HorizontalOptions="Center" Text="Welcome to Avalonia in MAUI"/>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="5">Controls</Label>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Buttons</Label>
-        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-            <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <ava:Button Content="Avalonia Button"/>
+        <Grid ColumnDefinitions="*, *"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <maui:AvaloniaView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ava:TextBox Text="Avalonia TextBox" />
             </maui:AvaloniaView>
-            <Button Text="Maui Button"/>
-        </StackLayout>
+            <Entry Grid.Column="1" Text="Maui Entry"/>
+        </Grid>
         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="2">Toggles</Label>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <maui:AvaloniaView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <ava:ToggleSwitch Content="Avalonia Switch"/>
+                <ava:ToggleSwitch Content="Avalonia Switch" />
             </maui:AvaloniaView>
             <Switch/>
         </StackLayout>
