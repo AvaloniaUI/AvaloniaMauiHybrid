@@ -4,7 +4,7 @@ using Avalonia.Maui.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Embedding;
+using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Platform;
 using MauiWindow = Microsoft.Maui.Controls.Window;
@@ -36,7 +36,7 @@ public static class AvaloniaAppBuilderExtensions
             .AfterSetup(appBuilder =>
             {
                 var builder = MauiApp.CreateBuilder()
-                    .UseMauiEmbedding<TMauiApplication>();
+                    .UseMauiApp<TMauiApplication>();
 
                 builder.Services.AddSingleton(appBuilder.Instance!)
 #if ANDROID
