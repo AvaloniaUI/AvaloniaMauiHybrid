@@ -3,7 +3,6 @@ using Avalonia.Layout;
 using Avalonia.Maui.Controls;
 using Microsoft.Maui.Handlers;
 using Avalonia.Maui.Platforms.iOS;
-using Microsoft.Maui.Controls;
 using AvaloniaControl = Avalonia.Controls.Control;
 
 namespace Avalonia.Maui.Handlers
@@ -36,12 +35,11 @@ namespace Avalonia.Maui.Handlers
 
         public override Microsoft.Maui.Graphics.Size GetDesiredSize(double widthConstraint, double heightConstraint)
         {
-            if ((VirtualView.VerticalOptions.Alignment != LayoutAlignment.Fill || VirtualView.HorizontalOptions.Alignment != LayoutAlignment.Fill) && VirtualView.Content is Layoutable control)
+            if (VirtualView.Content is Layoutable control)
             {
                 control.Measure(new Size(widthConstraint, heightConstraint));
 
-                var size = new Size(VirtualView.VerticalOptions.Alignment == LayoutAlignment.Fill ? heightConstraint : control.DesiredSize.Height,
-                    VirtualView.HorizontalOptions.Alignment == LayoutAlignment.Fill ? widthConstraint : control.DesiredSize.Width);
+                var size = new Size(control.DesiredSize.Width, control.DesiredSize.Height);
 
                 base.GetDesiredSize(size.Width, size.Height);
 
