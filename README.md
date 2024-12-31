@@ -80,8 +80,9 @@ Demo project to try: https://github.com/AvaloniaUI/AvaloniaMauiHybrid/tree/main/
 ```csharp
 private async void Button_OnClick(object? sender, RoutedEventArgs e)
 {
-    var location = await Geolocation.GetLocationAsync();
-    Console.WriteLine(location.ToString());
+        var location = await Geolocation.GetLocationAsync();
+        if (location != null)
+            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
 }
 ```
-Don't forget about enabling specific permissions. In the case of Geolocation class, you can follow [this documentation](https://learn.microsoft.com/en-us/xamarin/essentials/geolocation?tabs=android) from Microsoft.
+Don't forget about enabling specific permissions. In the case of Geolocation class, you can follow [this documentation](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/geolocation) from Microsoft.
