@@ -22,7 +22,9 @@ internal class MauiEmbeddingInitializer : IMauiInitializeService
         var iApp = services.GetRequiredService<IApplication>();
         if (iApp is Microsoft.Maui.Controls.Application mauiApp)
         {
+#if !WINDOWS10_0_19041_0_OR_GREATER
             mauiApp.MainPage = new Page();
+#endif
 
             _app.ActualThemeVariantChanged += (_, _) => SetAppTheme();
             SetAppTheme();

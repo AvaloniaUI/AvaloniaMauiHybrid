@@ -3,15 +3,39 @@ using Avalonia.Metadata;
 using Avalonia.Platform;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
+using System;
+using System.Runtime.InteropServices;
 using ContentView = Microsoft.Maui.Controls.ContentView;
 
 namespace Avalonia.Maui.Controls;
 
 public class MauiControlHost : NativeControlHost
 {
+#if WINDOWS10_0_19041_0_OR_GREATER
+    const int GWL_STYLE = -16;
+    const uint WS_CAPTION = 0x00C00000;      // WS_BORDER | WS_DLGFRAME
+    const uint WS_THICKFRAME = 0x00040000;
+
+     [DllImport("user32.dll", SetLastError = true)]
+    static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern uint SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+
+    public static void RemoveBorder(IntPtr hwnd)
+    {
+        uint style = GetWindowLong(hwnd, GWL_STYLE);
+        style &= ~WS_CAPTION;
+        style &= ~WS_THICKFRAME;
+        SetWindowLong(hwnd, GWL_STYLE, style);
+    }
+
+#endif
+
     private View? _content;
     private ContentView? _page;
 
@@ -72,6 +96,43 @@ public class MauiControlHost : NativeControlHost
 #elif IOS
         return new iOS.UIViewControlHandle(native);
 #endif
+#elif WINDOWS10_0_19041_0_OR_GREATER
+
+        var handle = MainThread.InvokeOnMainThreadAsync(() =>
+        {
+            var app = Microsoft.Maui.Controls.Application.Current;
+            if (app?.Handler?.MauiContext == null)
+            {
+                throw new InvalidOperationException("Application current is null.");
+            }
+
+            var pageHandler = new ContentViewHandler();
+            pageHandler.SetMauiContext(app.Handler.MauiContext);
+
+
+            _page = new ContentView
+            {
+                Handler = pageHandler,
+                Content = Content
+            };
+
+            var window = new MauiWinUIWindow();
+            window.Content = _page.ToPlatform(app.Handler.MauiContext);
+            RemoveBorder(window.WindowHandle);
+
+            if (window.Content is Microsoft.UI.Xaml.FrameworkElement rootElement)
+            {
+                // Apply theme
+                bool isDark = (PlatformThemeVariant?)Avalonia.Application.Current!.ActualThemeVariant == PlatformThemeVariant.Dark;
+                rootElement.RequestedTheme = isDark ? Microsoft.UI.Xaml.ElementTheme.Dark
+                    : Microsoft.UI.Xaml.ElementTheme.Light;
+            }
+
+            return window.WindowHandle;
+
+        }).Result;
+
+        return new PlatformHandle(handle, "HWMD");
 #else
         return base.CreateNativeControlCore(parent);
 #endif

@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		LICENSE = LICENSE
 		README.md = README.md
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AvaloniaSample", "AvaloniaSample", "{10E5B37C-47D1-498B-AD9D-9A281064C091}"
@@ -25,6 +25,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaSample.Android", "AvaloniaSample\AvaloniaSample.Android\AvaloniaSample.Android.csproj", "{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaSample.iOS", "AvaloniaSample\AvaloniaSample.iOS\AvaloniaSample.iOS.csproj", "{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaSample.Windows", "AvaloniaSample\AvaloniaSample.Windows\AvaloniaSample.Windows.csproj", "{BB32731A-F297-42B1-A086-6F13ABC419CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB32731A-F297-42B1-A086-6F13ABC419CA}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{BB32731A-F297-42B1-A086-6F13ABC419CA}.Debug|Any CPU.Build.0 = Debug|x64
+		{BB32731A-F297-42B1-A086-6F13ABC419CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB32731A-F297-42B1-A086-6F13ABC419CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{5B52DC9E-B2D8-444E-8CA7-102FD762675F} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
 		{3CFDDDE4-C90B-48FF-8C95-50F96909BF5A} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
 		{E92818E3-6BFA-4C9E-9481-3BECBACAFF0A} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
+		{BB32731A-F297-42B1-A086-6F13ABC419CA} = {10E5B37C-47D1-498B-AD9D-9A281064C091}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2803DA96-B1F5-490A-A82B-82C073DE4767}
