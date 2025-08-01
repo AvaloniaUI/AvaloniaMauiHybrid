@@ -65,7 +65,7 @@ public class MauiControlHost : NativeControlHost
 
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-#if ANDROID || IOS
+#if ANDROID || IOS ||WINDOWS10_0_19041_0_OR_GREATER
         var app = Microsoft.Maui.Controls.Application.Current!;
 #if ANDROID
         var services = app.Handler!.MauiContext!.Services;
@@ -95,29 +95,12 @@ public class MauiControlHost : NativeControlHost
         return new Android.AndroidViewControlHandle(native);
 #elif IOS
         return new iOS.UIViewControlHandle(native);
-#endif
 #elif WINDOWS10_0_19041_0_OR_GREATER
 
         var handle = MainThread.InvokeOnMainThreadAsync(() =>
         {
-            var app = Microsoft.Maui.Controls.Application.Current;
-            if (app?.Handler?.MauiContext == null)
-            {
-                throw new InvalidOperationException("Application current is null.");
-            }
-
-            var pageHandler = new ContentViewHandler();
-            pageHandler.SetMauiContext(app.Handler.MauiContext);
-
-
-            _page = new ContentView
-            {
-                Handler = pageHandler,
-                Content = Content
-            };
-
             var window = new MauiWinUIWindow();
-            window.Content = _page.ToPlatform(app.Handler.MauiContext);
+            window.Content = native;
             RemoveBorder(window.WindowHandle);
 
             if (window.Content is Microsoft.UI.Xaml.FrameworkElement rootElement)
@@ -133,6 +116,7 @@ public class MauiControlHost : NativeControlHost
         }).Result;
 
         return new PlatformHandle(handle, "HWMD");
+#endif
 #else
         return base.CreateNativeControlCore(parent);
 #endif
