@@ -215,10 +215,9 @@ namespace Avalonia.Maui.Windows
             void Show()
             {
                 wp.showCmd = SW_SHOWNORMAL;
-                var point = new System.Drawing.Point();
-                ClientToScreen(handle, ref point);
-                wp.normalPosition.X -= point.X;
-                wp.normalPosition.Y -= point.Y;
+                //Glitch outside of the screen
+                wp.normalPosition.X -= 1200;
+                wp.normalPosition.Y -= 1200;
                 SetWindowPlacement(handle, ref wp);
             }
 
