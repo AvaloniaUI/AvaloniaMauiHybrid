@@ -106,7 +106,7 @@ public static class AvaloniaAppBuilderExtensions
         Microsoft.Maui.ApplicationModel.Platform.OnPlatformWindowInitialized(window);
         if (Avalonia.Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime destop)
         {
-            destop.ShutdownRequested += (_, _) => Environment.Exit(0);
+            destop.Exit += (_, _) => Environment.Exit(0);
             destop.Startup += (_, _) =>
             {
                 var handle = window.GetWindowHandle();
