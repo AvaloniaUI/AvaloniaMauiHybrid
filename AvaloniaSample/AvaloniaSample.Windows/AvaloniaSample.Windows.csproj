@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaSamplesVersion)" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiSamplesVersion)" />
   </ItemGroup>
 
   <ItemGroup>

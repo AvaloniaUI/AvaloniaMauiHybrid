@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Maui.Controls;
+using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Skia.Helpers;
 using Avalonia.Styling;
@@ -98,6 +99,11 @@ namespace Avalonia.Maui.Windows
                 Microsoft.Maui.Controls.Application.Current.RequestedTheme == Microsoft.Maui.ApplicationModel.AppTheme.Dark ?
                 (ThemeVariant)PlatformThemeVariant.Dark
                 : (ThemeVariant)PlatformThemeVariant.Light;
+
+            if (Application.Current.ActualThemeVariant == ThemeVariant.Dark)
+            {
+                avaWindow.Background = new SolidColorBrush(Color.Parse("#1F1F1F"));
+            }
 
             avaWindow.Show();
 
