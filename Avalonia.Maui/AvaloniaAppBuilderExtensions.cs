@@ -26,11 +26,6 @@ namespace Avalonia.Maui;
 
 public static class AvaloniaAppBuilderExtensions
 {
-#if WINDOWS10_0_19041_0_OR_GREATER
-    [DllImport("user32.dll")]
-    public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-#endif
-
 #if ANDROID
     public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure = null)
         where TMauiApplication : Microsoft.Maui.Controls.Application
@@ -107,12 +102,6 @@ public static class AvaloniaAppBuilderExtensions
         if (Avalonia.Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime destop)
         {
             destop.Exit += (_, _) => Environment.Exit(0);
-            destop.Startup += (_, _) =>
-            {
-                var handle = window.GetWindowHandle();
-                var hwnd = destop.MainWindow!.TryGetPlatformHandle()!.Handle;
-                SetParent(handle, hwnd);
-            };
         }
 #else
 	    var platformApplication = new object();
