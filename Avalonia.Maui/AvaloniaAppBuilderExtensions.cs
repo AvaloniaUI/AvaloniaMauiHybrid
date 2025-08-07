@@ -10,6 +10,7 @@ using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Platform;
+using Microsoft.Maui.ApplicationModel;
 using MauiWindow = Microsoft.Maui.Controls.Window;
 #if IOS
 using PlatformWindow = UIKit.UIWindow;
@@ -102,6 +103,11 @@ public static class AvaloniaAppBuilderExtensions
         if (Avalonia.Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime destop)
         {
             destop.Exit += (_, _) => Environment.Exit(0);
+            destop.Startup += async (_, e) =>
+            {
+                await Task.Delay(2000); // Give time for the window to be initialized
+                WindowStateManager.Default.OnPlatformWindowInitialized(window);
+            };
         }
 #else
 	    var platformApplication = new object();
