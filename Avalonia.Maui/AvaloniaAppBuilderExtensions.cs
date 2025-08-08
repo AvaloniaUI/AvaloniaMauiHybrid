@@ -100,14 +100,15 @@ public static class AvaloniaAppBuilderExtensions
         Microsoft.UI.Xaml.Hosting.WindowsXamlManager.InitializeForCurrentThread();
         var window = new Microsoft.UI.Xaml.Window();
         Microsoft.Maui.ApplicationModel.Platform.OnPlatformWindowInitialized(window);
+        Avalonia.Maui.Platforms.Windows.HandlePatch.PatchAll();
+        WindowStateManager.Default.ActiveWindowChanged += (s, e) =>
+        {
+            //To get DeviceDisplay.MainDisplayInfo working in Windows
+            WindowStateManager.Default.OnPlatformWindowInitialized(window);
+        };
         if (Avalonia.Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime destop)
         {
             destop.Exit += (_, _) => Environment.Exit(0);
-            //destop.Startup += async (_, e) =>
-            //{
-            //    await Task.Delay(2000); // Give time for the window to be initialized
-            //    WindowStateManager.Default.OnPlatformWindowInitialized(window);
-            //};
         }
 #else
 	    var platformApplication = new object();
