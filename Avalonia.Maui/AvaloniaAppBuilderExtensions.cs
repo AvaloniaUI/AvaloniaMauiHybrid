@@ -100,7 +100,7 @@ public static class AvaloniaAppBuilderExtensions
         Microsoft.UI.Xaml.Hosting.WindowsXamlManager.InitializeForCurrentThread();
         var window = new Microsoft.UI.Xaml.Window();
         Microsoft.Maui.ApplicationModel.Platform.OnPlatformWindowInitialized(window);
-        Avalonia.Maui.Platforms.Windows.HandlePatch.PatchAll();
+        Avalonia.Maui.Platforms.Windows.Patches.PatchAll();
         WindowStateManager.Default.ActiveWindowChanged += (s, e) =>
         {
             //To get DeviceDisplay.MainDisplayInfo working in Windows
