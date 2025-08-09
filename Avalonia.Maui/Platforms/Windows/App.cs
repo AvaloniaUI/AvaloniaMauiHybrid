@@ -13,6 +13,8 @@ namespace Avalonia.Maui.Platforms.Windows
 
         public static void Start()
         {
+            AppActionsPatch.Patch();
+
             var thread = new Thread(() =>
             {
                 XamlCheckProcessRequirements();
