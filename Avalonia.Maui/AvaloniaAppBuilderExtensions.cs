@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Maui.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Platform;
+using Microsoft.Maui.ApplicationModel;
 using MauiWindow = Microsoft.Maui.Controls.Window;
 #if IOS
 using PlatformWindow = UIKit.UIWindow;
 using UIKit;
 #elif ANDROID
 using PlatformWindow = global::Android.Content.Context;
+#elif WINDOWS10_0_19041_0_OR_GREATER
+using PlatformWindow = Microsoft.UI.Xaml.Window;
 #else
 using PlatformWindow = System.Object;
 #endif
@@ -32,6 +38,10 @@ public static class AvaloniaAppBuilderExtensions
         where TMauiApplication : Microsoft.Maui.Controls.Application
 #endif
     {
+#if WINDOWS10_0_19041_0_OR_GREATER
+        Avalonia.Maui.Platforms.Windows.App.Start();
+#endif
+
         return appBuilder
             .AfterSetup(appBuilder =>
             {
@@ -46,6 +56,9 @@ public static class AvaloniaAppBuilderExtensions
 #elif IOS
 	                .AddSingleton(applicationDelegate ?? UIApplication.SharedApplication.Delegate)
 	                .AddSingleton<UIWindow>(static p => p.GetService<IUIApplicationDelegate>()!.GetWindow())
+#elif WINDOWS10_0_19041_0_OR_GREATER
+                    .AddKeyedSingleton<IDispatcher, Platforms.Windows.AppDispatcher>(typeof(IApplication))
+                    .AddSingleton(Microsoft.UI.Xaml.Application.Current)
 #endif
                     .AddSingleton<IMauiInitializeService, MauiEmbeddingInitializer>();
 
@@ -81,6 +94,23 @@ public static class AvaloniaAppBuilderExtensions
 	    }
 
 		Microsoft.Maui.ApplicationModel.Platform.Init(() => platformApplication.GetWindow().RootViewController!);
+#elif WINDOWS10_0_19041_0_OR_GREATER
+        var platformApplication = mauiApp.Services.GetRequiredService<Microsoft.UI.Xaml.Application>();
+        Microsoft.UI.Dispatching.DispatcherQueueController.CreateOnCurrentThread();
+        Microsoft.UI.Xaml.Hosting.WindowsXamlManager.InitializeForCurrentThread();
+        var window = new Microsoft.UI.Xaml.Window();
+        Microsoft.Maui.ApplicationModel.Platform.OnPlatformWindowInitialized(window);
+        Avalonia.Maui.Platforms.Windows.Patches.PatchAll();
+        Avalonia.Maui.Platforms.Windows.AppActionsPatch.Register();
+        WindowStateManager.Default.ActiveWindowChanged += (s, e) =>
+        {
+            //To get DeviceDisplay.MainDisplayInfo working in Windows
+            WindowStateManager.Default.OnPlatformWindowInitialized(window);
+        };
+        if (Avalonia.Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime destop)
+        {
+            destop.Exit += (_, _) => Environment.Exit(0);
+        }
 #else
 	    var platformApplication = new object();
 	    var window = new object();
