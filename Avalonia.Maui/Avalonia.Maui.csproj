@@ -65,6 +65,11 @@
 		<None Include="Icon.png" Pack="true" Visible="false" PackagePath="" />
 	</ItemGroup>
 
+    <!-- Force include Icon.png in lib folder for Windows build -->
+    <ItemGroup>
+        <None Include="Icon.png" Pack="true" Visible="false" PackagePath="lib\net8.0-windows10.0.19041\Avalonia.Maui" />        
+    </ItemGroup>
+
 	<ItemGroup>
 	  <None Update="Platforms\Windows\GeneratedApp.tt">
 	    <Generator>TextTemplatingFileGenerator</Generator>
