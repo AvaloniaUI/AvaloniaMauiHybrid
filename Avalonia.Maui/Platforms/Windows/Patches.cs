@@ -144,5 +144,30 @@ namespace Avalonia.Maui.Platforms.Windows
 
         }
     }
+
+    [HarmonyPatch]
+    class SemanticScreenReaderPatch
+    {
+    	// This method tells Harmony which method to patch
+        static MethodBase TargetMethod()
+        {
+            // Find the internal type by full name
+            var type = AccessTools.TypeByName("Microsoft.Maui.Accessibility.SemanticScreenReaderImplementation");
+            if (type == null)
+                throw new Exception("Could not find SemanticScreenReaderImplementation type");
+
+            // Find the Announce method with a string parameter
+            return AccessTools.Method(type, "Announce", new Type[] { typeof(string) });
+        }
+
+		// Prefix runs before original method; returning false skips original    
+    	static bool Prefix(string text)
+        {
+			// We provide a fake window as a stub. As of 17.09.2026, Microsoft's implementation of the 
+			// SemanticScreenReaderImplementation.Announce() doesn't handle an absence of the automation peer correctly
+			// and crashes with AV.
+    		return false; 
+        }
+    }
 }
 #endif
