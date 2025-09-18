@@ -58,6 +58,7 @@ public static class AvaloniaAppBuilderExtensions
 	                .AddSingleton<UIWindow>(static p => p.GetService<IUIApplicationDelegate>()!.GetWindow())
 #elif WINDOWS10_0_19041_0_OR_GREATER
                     .AddKeyedSingleton<IDispatcher, Platforms.Windows.AppDispatcher>(typeof(IApplication))
+					.AddSingleton<IDispatcher, Platforms.Windows.AppDispatcher>()
                     .AddSingleton(Microsoft.UI.Xaml.Application.Current)
 #endif
                     .AddSingleton<IMauiInitializeService, MauiEmbeddingInitializer>();
