@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <AvaloniaVersion>11.1.3</AvaloniaVersion>
-    <AvaloniaSamplesVersion>11.1.3</AvaloniaSamplesVersion>
-    <MauiVersion>8.0.3</MauiVersion>
-    <MauiSamplesVersion>8.0.91</MauiSamplesVersion>
+    <AvaloniaVersion>12.0.999-cibuild0061334-alpha</AvaloniaVersion>
+    <AvaloniaSamplesVersion>12.0.999-cibuild0061334-alpha</AvaloniaSamplesVersion>
+    <MauiVersion>10.0.20</MauiVersion>
+    <MauiSamplesVersion>10.0.20</MauiSamplesVersion>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
