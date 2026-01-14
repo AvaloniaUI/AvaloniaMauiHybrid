@@ -17,10 +17,6 @@ public class Application : AvaloniaAndroidApplication<App>
 
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
-        return base.CustomizeAppBuilder(builder)
-            .UseMaui<AvaloniaSample.Maui.MauiApplication>(this, b => b
-                .ConfigureSyncfusionCore()
-                .UseMauiCommunityToolkit()
-                .UseMauiCommunityToolkitMediaElement());
+        return base.CustomizeAppBuilder(builder);
     }
 }
