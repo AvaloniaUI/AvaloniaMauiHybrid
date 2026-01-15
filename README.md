@@ -51,7 +51,23 @@ Demo project to try: https://github.com/AvaloniaUI/AvaloniaMauiHybrid/tree/main/
 2. Install https://www.nuget.org/packages/Avalonia.Maui nuget package to your project.
 3. You need to have both Avalonia and MAUI Application classes created. For MAUI Application, you need to inherit Microsoft.Maui.Controls.Application, for example - [MauiApplication.cs](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/blob/main/AvaloniaSample/AvaloniaSample/Maui/MauiApplication.cs).
 4. Add `<UseMaui>true</UseMaui>` to every project (shared and platform-specific) from where you will use MAUI APIs. For example, [here](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/blob/main/AvaloniaSample/AvaloniaSample/AvaloniaSample.csproj#L4) and [here](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/blob/main/AvaloniaSample/AvaloniaSample.iOS/AvaloniaSample.iOS.csproj#L4).
-5. Update both `MainActivity` (Android project) and `AppDelegate` (iOS project) app builders to include `.UseMaui()`
+5. Update both `MainActivity` (Avalonia 11.x) / `Applicaton` (Avalonia 12.x) (Android project) and `AppDelegate` (iOS project) app builders to include `.UseMaui()`
+   ```csharp
+    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
+    {
+      return base.CustomizeAppBuilder(builder)
+          .UseMaui<AvaloniaSample.Maui.MauiApplication>(this);
+    }
+   ```
+   - For Avalonia 11.x, use:
+   ```csharp
+    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
+    {
+      return base.CustomizeAppBuilder(builder)
+          .UseMaui<AvaloniaSample.Maui.MauiApplication>(this.Application);
+    }
+   ```
+   - For Avalonia 12.x, update the initalization logic in your `Application` class:
    ```csharp
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {

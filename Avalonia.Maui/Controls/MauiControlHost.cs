@@ -69,7 +69,7 @@ public class MauiControlHost : NativeControlHost
         var app = Microsoft.Maui.Controls.Application.Current!;
 #if ANDROID
         var services = app.Handler!.MauiContext!.Services;
-        var mauiContext = new MauiContext(services, services.GetRequiredService<global::Android.App.Activity>());
+        var mauiContext = new MauiContext(services, services.GetRequiredService<global::Android.App.Application>());
 #else
         var mauiContext = app.Handler!.MauiContext!;
 #endif
