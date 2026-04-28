@@ -28,7 +28,13 @@ namespace Avalonia.Maui;
 public static class AvaloniaAppBuilderExtensions
 {
 #if ANDROID
+    [Obsolete("This API is obsolete and remains in-place for Avalonia 11. Use the overload accepting an Android.App.Application for Avalonia 12 and higher")]
     public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Activity activity, Action<MauiAppBuilder>? configure = null)
+        where TMauiApplication : Microsoft.Maui.Controls.Application
+    {
+        return appBuilder.UseMaui<TMauiApplication>(activity.Application, configure);
+    }
+    public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, global::Android.App.Application application, Action<MauiAppBuilder>? configure = null)
         where TMauiApplication : Microsoft.Maui.Controls.Application
 #elif IOS
     public static AppBuilder UseMaui<TMauiApplication>(this AppBuilder appBuilder, IUIApplicationDelegate applicationDelegate, Action<MauiAppBuilder>? configure  = null)
@@ -50,9 +56,8 @@ public static class AvaloniaAppBuilderExtensions
 
                 builder.Services.AddSingleton(appBuilder.Instance!)
 #if ANDROID
-                    .AddSingleton(activity.Application!)
-                    .AddSingleton<global::Android.Content.Context>(activity)
-                    .AddSingleton(activity)
+                    .AddSingleton(application)
+                    .AddSingleton<global::Android.Content.Context>(application)
 #elif IOS
 	                .AddSingleton(applicationDelegate ?? UIApplication.SharedApplication.Delegate)
 	                .AddSingleton<UIWindow>(static p => p.GetService<IUIApplicationDelegate>()!.GetWindow())
@@ -75,13 +80,13 @@ public static class AvaloniaAppBuilderExtensions
         var iApp = mauiApp.Services.GetRequiredService<IApplication>();
 
 #if ANDROID
-        var window = mauiApp.Services.GetRequiredService<global::Android.App.Activity>();
+        var window = mauiApp.Services.GetRequiredService<global::Android.App.Application>();
         var scope = mauiApp.Services.CreateScope();
-        var platformApplication = window.Application!;
+        var platformApplication = window!;
         var services = scope.ServiceProvider;
         var rootContext = new MauiContext(scope.ServiceProvider, window);
 
-        Microsoft.Maui.ApplicationModel.Platform.Init(window, null);
+        Microsoft.Maui.ApplicationModel.Platform.Init(window);
 #else
 		var rootContext = new MauiContext(mauiApp.Services);
 	    var services = mauiApp.Services;
@@ -139,7 +144,7 @@ public static class AvaloniaAppBuilderExtensions
     {
 #if ANDROID
         var services = app.Handler!.MauiContext!.Services;
-        var context = new MauiContext(services, services.GetRequiredService<global::Android.App.Activity>());
+        var context = new MauiContext(services, services.GetRequiredService<global::Android.App.Application>());
 #else
 	    var context = app.Handler.MauiContext;
 #endif
