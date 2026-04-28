@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore workloads
-      run: dotnet workload restore
+      run: dotnet workload restore Avalonia.Maui/Avalonia.Maui.csproj
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Avalonia.Maui/Avalonia.Maui.csproj
     - name: Build
-      run: dotnet pack --no-restore -o './artifacts'
+      run: dotnet pack Avalonia.Maui/Avalonia.Maui.csproj --no-restore -o './artifacts'
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
