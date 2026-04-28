@@ -9,7 +9,6 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 - Calling MAUI Essentials APIs from Avalonia.
 
 **Supported OS**: iOS and Android only.
-- For Windows support, please refer to the [open issue #7](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/7).
 - For macOS support, please refer to the [open issue #10](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/10).
 - Note that MAUI doesn't support the Browser platform. For Blazor integration, see [Avalonia.Browser.Blazor](https://www.nuget.org/packages/Avalonia.Browser.Blazor).
 - Future support for Tizen backend will be possible with Avalonia 11.1.
