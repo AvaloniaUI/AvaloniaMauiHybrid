@@ -1,6 +1,8 @@
 
 ![Hybrid_Header](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/assets/552074/3e43d1c1-ff2a-40ef-89d5-a8cc34ed732b)
 
+> **Note:** Support for the Avalonia.MAUI Hybrid controls is being migrated to **Avalonia.Controls.Maui** ([github.com/avaloniaui/avalonia.controls.maui](https://github.com/avaloniaui/avalonia.controls.maui)). Along with supporting .NET MAUI handlers with drawn controls, it also allows for the same hybrid embedding support as this codebase. No support is for hybrid is being dropped, just migrated. Once Avalonia.Controls.Maui is released as stable for .NET 11, Avalonia.MAUI Hybrid will be deprecated.
+
 # Avalonia.Maui Hybrid
 
 This repository contains source code for the integration of Avalonia and MAUI frameworks, supporting the following scenarios:
@@ -9,10 +11,6 @@ This repository contains source code for the integration of Avalonia and MAUI fr
 - Calling MAUI Essentials APIs from Avalonia.
 
 **Supported OS**: iOS and Android only.
-- For Windows support, please refer to the [open issue #7](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/7).
-- For macOS support, please refer to the [open issue #10](https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/10).
-- Note that MAUI doesn't support the Browser platform. For Blazor integration, see [Avalonia.Browser.Blazor](https://www.nuget.org/packages/Avalonia.Browser.Blazor).
-- Future support for Tizen backend will be possible with Avalonia 11.1.
 - You can make an solution that compiles avalonia maui hybrid for mobile targets and compiles without maui hybrid for other platforms. See https://github.com/AvaloniaUI/AvaloniaMauiHybrid/issues/12
     
 ## Quick Start
